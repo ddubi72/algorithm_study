@@ -1,0 +1,15 @@
+#1 테이블 해시 함수
+def solution(data, col, row_begin, row_end):
+    answer = 0
+    s_=[]
+    data.sort(key=lambda x:(x[col-1],-x[0]))
+    data_len = len(data[0])
+    for i in range(row_begin-1,row_end):
+        di = 0
+        for j in range(data_len):
+            di+=data[i][j]%(i+1)
+        s_.append(di)
+    for s in s_:
+        answer^=s
+
+    return answer
